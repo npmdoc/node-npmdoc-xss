@@ -1,0 +1,2426 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/leizongmin/js-xss"
+
+    >xss (v0.3.3)</a>
+</h1>
+<h4>Sanitize untrusted HTML (to prevent XSS) with a configuration specified by a Whitelist</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss">module xss</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.FilterXSS">
+            function <span class="apidocSignatureSpan">xss.</span>FilterXSS
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.StripTagBody">
+            function <span class="apidocSignatureSpan">xss.</span>StripTagBody
+            <span class="apidocSignatureSpan">(tags, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.clearNonPrintableCharacter">
+            function <span class="apidocSignatureSpan">xss.</span>clearNonPrintableCharacter
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.escapeAttrValue">
+            function <span class="apidocSignatureSpan">xss.</span>escapeAttrValue
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.escapeDangerHtml5Entities">
+            function <span class="apidocSignatureSpan">xss.</span>escapeDangerHtml5Entities
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.escapeHtml">
+            function <span class="apidocSignatureSpan">xss.</span>escapeHtml
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.escapeHtmlEntities">
+            function <span class="apidocSignatureSpan">xss.</span>escapeHtmlEntities
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.escapeQuote">
+            function <span class="apidocSignatureSpan">xss.</span>escapeQuote
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.friendlyAttrValue">
+            function <span class="apidocSignatureSpan">xss.</span>friendlyAttrValue
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.getDefaultCSSWhiteList">
+            function <span class="apidocSignatureSpan">xss.</span>getDefaultCSSWhiteList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.getDefaultWhiteList">
+            function <span class="apidocSignatureSpan">xss.</span>getDefaultWhiteList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.onIgnoreTag">
+            function <span class="apidocSignatureSpan">xss.</span>onIgnoreTag
+            <span class="apidocSignatureSpan">(tag, html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.onIgnoreTagAttr">
+            function <span class="apidocSignatureSpan">xss.</span>onIgnoreTagAttr
+            <span class="apidocSignatureSpan">(tag, name, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.onIgnoreTagStripAll">
+            function <span class="apidocSignatureSpan">xss.</span>onIgnoreTagStripAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.onTag">
+            function <span class="apidocSignatureSpan">xss.</span>onTag
+            <span class="apidocSignatureSpan">(tag, html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.onTagAttr">
+            function <span class="apidocSignatureSpan">xss.</span>onTagAttr
+            <span class="apidocSignatureSpan">(tag, name, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.parseAttr">
+            function <span class="apidocSignatureSpan">xss.</span>parseAttr
+            <span class="apidocSignatureSpan">(html, onAttr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.parseTag">
+            function <span class="apidocSignatureSpan">xss.</span>parseTag
+            <span class="apidocSignatureSpan">(html, onTag, escapeHtml)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.safeAttrValue">
+            function <span class="apidocSignatureSpan">xss.</span>safeAttrValue
+            <span class="apidocSignatureSpan">(tag, name, value, cssFilter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.stripBlankChar">
+            function <span class="apidocSignatureSpan">xss.</span>stripBlankChar
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.stripCommentTag">
+            function <span class="apidocSignatureSpan">xss.</span>stripCommentTag
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.unescapeQuote">
+            function <span class="apidocSignatureSpan">xss.</span>unescapeQuote
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>FilterXSS.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>cssFilter</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>default</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>parser</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>util</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.</span>whiteList</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss.FilterXSS">module xss.FilterXSS</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.FilterXSS.FilterXSS">
+            function <span class="apidocSignatureSpan">xss.</span>FilterXSS
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss.FilterXSS.prototype">module xss.FilterXSS.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.FilterXSS.prototype.process">
+            function <span class="apidocSignatureSpan">xss.FilterXSS.prototype.</span>process
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss.default">module xss.default</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.StripTagBody">
+            function <span class="apidocSignatureSpan">xss.default.</span>StripTagBody
+            <span class="apidocSignatureSpan">(tags, next)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.clearNonPrintableCharacter">
+            function <span class="apidocSignatureSpan">xss.default.</span>clearNonPrintableCharacter
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.escapeAttrValue">
+            function <span class="apidocSignatureSpan">xss.default.</span>escapeAttrValue
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.escapeDangerHtml5Entities">
+            function <span class="apidocSignatureSpan">xss.default.</span>escapeDangerHtml5Entities
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.escapeHtml">
+            function <span class="apidocSignatureSpan">xss.default.</span>escapeHtml
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.escapeHtmlEntities">
+            function <span class="apidocSignatureSpan">xss.default.</span>escapeHtmlEntities
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.escapeQuote">
+            function <span class="apidocSignatureSpan">xss.default.</span>escapeQuote
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.friendlyAttrValue">
+            function <span class="apidocSignatureSpan">xss.default.</span>friendlyAttrValue
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.getDefaultCSSWhiteList">
+            function <span class="apidocSignatureSpan">xss.default.</span>getDefaultCSSWhiteList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.getDefaultWhiteList">
+            function <span class="apidocSignatureSpan">xss.default.</span>getDefaultWhiteList
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.onIgnoreTag">
+            function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTag
+            <span class="apidocSignatureSpan">(tag, html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.onIgnoreTagAttr">
+            function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTagAttr
+            <span class="apidocSignatureSpan">(tag, name, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.onIgnoreTagStripAll">
+            function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTagStripAll
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.onTag">
+            function <span class="apidocSignatureSpan">xss.default.</span>onTag
+            <span class="apidocSignatureSpan">(tag, html, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.onTagAttr">
+            function <span class="apidocSignatureSpan">xss.default.</span>onTagAttr
+            <span class="apidocSignatureSpan">(tag, name, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.safeAttrValue">
+            function <span class="apidocSignatureSpan">xss.default.</span>safeAttrValue
+            <span class="apidocSignatureSpan">(tag, name, value, cssFilter)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.stripBlankChar">
+            function <span class="apidocSignatureSpan">xss.default.</span>stripBlankChar
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.stripCommentTag">
+            function <span class="apidocSignatureSpan">xss.default.</span>stripCommentTag
+            <span class="apidocSignatureSpan">(html)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.default.unescapeQuote">
+            function <span class="apidocSignatureSpan">xss.default.</span>unescapeQuote
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.default.</span>cssFilter</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">xss.default.</span>whiteList</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss.parser">module xss.parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.parser.parseAttr">
+            function <span class="apidocSignatureSpan">xss.parser.</span>parseAttr
+            <span class="apidocSignatureSpan">(html, onAttr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.parser.parseTag">
+            function <span class="apidocSignatureSpan">xss.parser.</span>parseTag
+            <span class="apidocSignatureSpan">(html, onTag, escapeHtml)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.xss.util">module xss.util</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.util.forEach">
+            function <span class="apidocSignatureSpan">xss.util.</span>forEach
+            <span class="apidocSignatureSpan">(arr, fn, scope)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.util.indexOf">
+            function <span class="apidocSignatureSpan">xss.util.</span>indexOf
+            <span class="apidocSignatureSpan">(arr, item)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.xss.util.trim">
+            function <span class="apidocSignatureSpan">xss.util.</span>trim
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss" id="apidoc.module.xss">module xss</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.FilterXSS" id="apidoc.element.xss.FilterXSS">
+        function <span class="apidocSignatureSpan">xss.</span>FilterXSS
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FilterXSS(options) {
+  options = shallowCopyObject(options || {});
+
+  if (options.stripIgnoreTag) {
+    if (options.onIgnoreTag) {
+      console.error(&#x27;Notes: cannot use these two options &#x22;stripIgnoreTag&#x22; and &#x22;onIgnoreTag&#x22; at the same time&#x27;);
+    }
+    options.onIgnoreTag = DEFAULT.onIgnoreTagStripAll;
+  }
+
+  options.whiteList = options.whiteList || DEFAULT.whiteList;
+  options.onTag = options.onTag || DEFAULT.onTag;
+  options.onTagAttr = options.onTagAttr || DEFAULT.onTagAttr;
+  options.onIgnoreTag = options.onIgnoreTag || DEFAULT.onIgnoreTag;
+  options.onIgnoreTagAttr = options.onIgnoreTagAttr || DEFAULT.onIgnoreTagAttr;
+  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
+  options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
+  this.options = options;
+
+  if (options.css === false) {
+    this.cssFilter = false;
+  } else {
+    options.css = options.css || {};
+    this.cssFilter = new FilterCSS(options.css);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+To avoid passing `options` every time, you can also do it in a faster way by
+creating a `FilterXSS` instance:
+
+```javascript
+options = {};  // Custom rules
+myxss = new xss.<span class="apidocCodeKeywordSpan">FilterXSS</span>(options);
+// then apply myxss.process()
+html = myxss.process(&#x27;&#x3c;script&#x3e;alert(&#x22;xss&#x22;);&#x3c;/script&#x3e;&#x27;);
+```
+
+Details of parameters in `options` would be described below.
+
+### Whitelist
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.StripTagBody" id="apidoc.element.xss.StripTagBody">
+        function <span class="apidocSignatureSpan">xss.</span>StripTagBody
+        <span class="apidocSignatureSpan">(tags, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StripTagBody(tags, next) {
+  if (typeof(next) !== &#x27;function&#x27;) {
+    next = function () {};
+  }
+
+  var isRemoveAllTag = !Array.isArray(tags);
+  function isRemoveTag (tag) {
+    if (isRemoveAllTag) return true;
+    return (_.indexOf(tags, tag) !== -1);
+  }
+
+  var removeList = [];   // 要删除的位置范围列表
+  var posStart = false;  // 当前标签开始位置
+
+  return {
+    onIgnoreTag: function (tag, html, options) {
+      if (isRemoveTag(tag)) {
+        if (options.isClosing) {
+          var ret = &#x27;[/removed]&#x27;;
+          var end = options.position + ret.length;
+          removeList.push([posStart !== false ? posStart : options.position, end]);
+          posStart = false;
+          return ret;
+        } else {
+          if (!posStart) {
+            posStart = options.position;
+          }
+          return &#x27;[removed]&#x27;;
+        }
+      } else {
+        return next(tag, html, options);
+      }
+    },
+    remove: function (html) {
+      var rethtml = &#x27;&#x27;;
+      var lastPos = 0;
+      _.forEach(removeList, function (pos) {
+        rethtml += html.slice(lastPos, pos[0]);
+        lastPos = pos[1];
+      });
+      rethtml += html.slice(lastPos);
+      return rethtml;
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.clearNonPrintableCharacter" id="apidoc.element.xss.clearNonPrintableCharacter">
+        function <span class="apidocSignatureSpan">xss.</span>clearNonPrintableCharacter
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clearNonPrintableCharacter(str) {
+  var str2 = &#x27;&#x27;;
+  for (var i = 0, len = str.length; i &#x3c; len; i++) {
+    str2 += str.charCodeAt(i) &#x3c; 32 ? &#x27; &#x27; : str.charAt(i);
+  }
+  return _.trim(str2);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.escapeAttrValue" id="apidoc.element.xss.escapeAttrValue">
+        function <span class="apidocSignatureSpan">xss.</span>escapeAttrValue
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrValue(str) {
+  str = escapeQuote(str);
+  str = escapeHtml(str);
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var source = &#x27;&#x3c;div a=&#x22;1&#x22; b=&#x22;2&#x22; data-a=&#x22;3&#x22; data-b=&#x22;4&#x22;&#x3e;hello&#x3c;/div&#x3e
+;&#x27;;
+var html = xss(source, {
+  onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+    if (name.substr(0, 5) === &#x27;data-&#x27;) {
+      // escape its value using built-in escapeAttrValue function
+      return name + &#x27;=&#x22;&#x27; + xss.<span class="apidocCodeKeywordSpan">escapeAttrValue</span>(value) + &#x27;&#x22;&#
+x27;;
+    }
+  }
+});
+
+console.log(&#x27;%s\nconvert to:\n%s&#x27;, source, html);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.escapeDangerHtml5Entities" id="apidoc.element.xss.escapeDangerHtml5Entities">
+        function <span class="apidocSignatureSpan">xss.</span>escapeDangerHtml5Entities
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeDangerHtml5Entities(str) {
+  return str.replace(REGEXP_ATTR_VALUE_COLON, &#x27;:&#x27;)
+            .replace(REGEXP_ATTR_VALUE_NEWLINE, &#x27; &#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.escapeHtml" id="apidoc.element.xss.escapeHtml">
+        function <span class="apidocSignatureSpan">xss.</span>escapeHtml
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeHtml(html) {
+  return html.replace(REGEXP_LT, &#x27;&#x26;lt;&#x27;).replace(REGEXP_GT, &#x27;&#x26;gt;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.escapeHtmlEntities" id="apidoc.element.xss.escapeHtmlEntities">
+        function <span class="apidocSignatureSpan">xss.</span>escapeHtmlEntities
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeHtmlEntities(str) {
+  return str.replace(REGEXP_ATTR_VALUE_1, function replaceUnicode (str, code) {
+    return (code[0] === &#x27;x&#x27; || code[0] === &#x27;X&#x27;)
+            ? String.fromCharCode(parseInt(code.substr(1), 16))
+            : String.fromCharCode(parseInt(code, 10));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.escapeQuote" id="apidoc.element.xss.escapeQuote">
+        function <span class="apidocSignatureSpan">xss.</span>escapeQuote
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeQuote(str) {
+  return str.replace(REGEXP_QUOTE, &#x27;&#x26;quot;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.friendlyAttrValue" id="apidoc.element.xss.friendlyAttrValue">
+        function <span class="apidocSignatureSpan">xss.</span>friendlyAttrValue
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function friendlyAttrValue(str) {
+  str = unescapeQuote(str);             // 双引号
+  str = escapeHtmlEntities(str);         // 转换HTML实体编码
+  str = escapeDangerHtml5Entities(str);  // 转换危险的HTML5新增实体编码
+  str = clearNonPrintableCharacter(str); // 清除不可见字符
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var list = [];
+var html = xss(source, {
+  onTagAttr: function (tag, name, value, isWhiteAttr) {
+    if (tag === &#x27;img&#x27; &#x26;&#x26; name === &#x27;src&#x27;) {
+      // Use the built-in friendlyAttrValue function to escape attribute
+      // values. It supports converting entity tags such as &#x26;lt; to printable
+      // characters such as &#x3c;
+      list.push(xss.<span class="apidocCodeKeywordSpan">friendlyAttrValue</span>(value));
+    }
+    // Return nothing, means keep the default handling measure
+  }
+});
+
+console.log(&#x27;image list:\n%s&#x27;, list.join(&#x27;, &#x27;));
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.getDefaultCSSWhiteList" id="apidoc.element.xss.getDefaultCSSWhiteList">
+        function <span class="apidocSignatureSpan">xss.</span>getDefaultCSSWhiteList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDefaultWhiteList() {
+  // 白名单值说明：
+  // true: 允许该属性
+  // Function: function (val) { } 返回true表示允许该属性，其他值均表示不允许
+  // RegExp: regexp.test(val) 返回true表示允许该属性，其他值均表示不允许
+  // 除上面列出的值外均表示不允许
+  var whiteList = {};
+
+  whiteList[&#x27;align-content&#x27;] = false; // default: auto
+  whiteList[&#x27;align-items&#x27;] = false; // default: auto
+  whiteList[&#x27;align-self&#x27;] = false; // default: auto
+  whiteList[&#x27;alignment-adjust&#x27;] = false; // default: auto
+  whiteList[&#x27;alignment-baseline&#x27;] = false; // default: baseline
+  whiteList[&#x27;all&#x27;] = false; // default: depending on individual properties
+  whiteList[&#x27;anchor-point&#x27;] = false; // default: none
+  whiteList[&#x27;animation&#x27;] = false; // default: depending on individual properties
+  whiteList[&#x27;animation-delay&#x27;] = false; // default: 0
+  whiteList[&#x27;animation-direction&#x27;] = false; // default: normal
+  whiteList[&#x27;animation-duration&#x27;] = false; // default: 0
+  whiteList[&#x27;animation-fill-mode&#x27;] = false; // default: none
+  whiteList[&#x27;animation-iteration-count&#x27;] = false; // default: 1
+  whiteList[&#x27;animation-name&#x27;] = false; // default: none
+  whiteList[&#x27;animation-play-state&#x27;] = false; // default: running
+  whiteList[&#x27;animation-timing-function&#x27;] = false; // default: ease
+  whiteList[&#x27;azimuth&#x27;] = false; // default: center
+  whiteList[&#x27;backface-visibility&#x27;] = false; // default: visible
+  whiteList[&#x27;background&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;background-attachment&#x27;] = true; // default: scroll
+  whiteList[&#x27;background-clip&#x27;] = true; // default: border-box
+  whiteList[&#x27;background-color&#x27;] = true; // default: transparent
+  whiteList[&#x27;background-image&#x27;] = true; // default: none
+  whiteList[&#x27;background-origin&#x27;] = true; // default: padding-box
+  whiteList[&#x27;background-position&#x27;] = true; // default: 0% 0%
+  whiteList[&#x27;background-repeat&#x27;] = true; // default: repeat
+  whiteList[&#x27;background-size&#x27;] = true; // default: auto
+  whiteList[&#x27;baseline-shift&#x27;] = false; // default: baseline
+  whiteList[&#x27;binding&#x27;] = false; // default: none
+  whiteList[&#x27;bleed&#x27;] = false; // default: 6pt
+  whiteList[&#x27;bookmark-label&#x27;] = false; // default: content()
+  whiteList[&#x27;bookmark-level&#x27;] = false; // default: none
+  whiteList[&#x27;bookmark-state&#x27;] = false; // default: open
+  whiteList[&#x27;border&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-bottom&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-bottom-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-bottom-left-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-bottom-right-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-bottom-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-bottom-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-collapse&#x27;] = true; // default: separate
+  whiteList[&#x27;border-color&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-image&#x27;] = true; // default: none
+  whiteList[&#x27;border-image-outset&#x27;] = true; // default: 0
+  whiteList[&#x27;border-image-repeat&#x27;] = true; // default: stretch
+  whiteList[&#x27;border-image-slice&#x27;] = true; // default: 100%
+  whiteList[&#x27;border-image-source&#x27;] = true; // default: none
+  whiteList[&#x27;border-image-width&#x27;] = true; // default: 1
+  whiteList[&#x27;border-left&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-left-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-left-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-left-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-right&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-right-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-right-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-right-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-spacing&#x27;] = true; // default: 0
+  whiteList[&#x27;border-style&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-top&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-top-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-top-left-radius&#x27;] = true; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.getDefaultWhiteList" id="apidoc.element.xss.getDefaultWhiteList">
+        function <span class="apidocSignatureSpan">xss.</span>getDefaultWhiteList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDefaultWhiteList() {
+  return {
+    a:      [&#x27;target&#x27;, &#x27;href&#x27;, &#x27;title&#x27;],
+    abbr:   [&#x27;title&#x27;],
+    address: [],
+    area:   [&#x27;shape&#x27;, &#x27;coords&#x27;, &#x27;href&#x27;, &#x27;alt&#x27;],
+    article: [],
+    aside:  [],
+    audio:  [&#x27;autoplay&#x27;, &#x27;controls&#x27;, &#x27;loop&#x27;, &#x27;preload&#x27;, &#x27;src&#x27;],
+    b:      [],
+    bdi:    [&#x27;dir&#x27;],
+    bdo:    [&#x27;dir&#x27;],
+    big:    [],
+    blockquote: [&#x27;cite&#x27;],
+    br:     [],
+    caption: [],
+    center: [],
+    cite:   [],
+    code:   [],
+    col:    [&#x27;align&#x27;, &#x27;valign&#x27;, &#x27;span&#x27;, &#x27;width&#x27;],
+    colgroup: [&#x27;align&#x27;, &#x27;valign&#x27;, &#x27;span&#x27;, &#x27;width&#x27;],
+    dd:     [],
+    del:    [&#x27;datetime&#x27;],
+    details: [&#x27;open&#x27;],
+    div:    [],
+    dl:     [],
+    dt:     [],
+    em:     [],
+    font:   [&#x27;color&#x27;, &#x27;size&#x27;, &#x27;face&#x27;],
+    footer: [],
+    h1:     [],
+    h2:     [],
+    h3:     [],
+    h4:     [],
+    h5:     [],
+    h6:     [],
+    header: [],
+    hr:     [],
+    i:      [],
+    img:    [&#x27;src&#x27;, &#x27;alt&#x27;, &#x27;title&#x27;, &#x27;width&#x27;, &#x27;height&#x27;],
+    ins:    [&#x27;datetime&#x27;],
+    li:     [],
+    mark:   [],
+    nav:    [],
+    ol:     [],
+    p:      [],
+    pre:    [],
+    s:      [],
+    section:[],
+    small:  [],
+    span:   [],
+    sub:    [],
+    sup:    [],
+    strong: [],
+    table:  [&#x27;width&#x27;, &#x27;border&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tbody:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    td:     [&#x27;width&#x27;, &#x27;rowspan&#x27;, &#x27;colspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tfoot:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    th:     [&#x27;width&#x27;, &#x27;rowspan&#x27;, &#x27;colspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    thead:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    tr:     [&#x27;rowspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tt:     [],
+    u:      [],
+    ul:     [],
+    video:  [&#x27;autoplay&#x27;, &#x27;controls&#x27;, &#x27;loop&#x27;, &#x27;preload&#x27;, &#x27;src&#x27;, &#x27;height&#x27;, &#x27;width&#x27;]
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.onIgnoreTag" id="apidoc.element.xss.onIgnoreTag">
+        function <span class="apidocSignatureSpan">xss.</span>onIgnoreTag
+        <span class="apidocSignatureSpan">(tag, html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTag(tag, html, options) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.onIgnoreTagAttr" id="apidoc.element.xss.onIgnoreTagAttr">
+        function <span class="apidocSignatureSpan">xss.</span>onIgnoreTagAttr
+        <span class="apidocSignatureSpan">(tag, name, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTagAttr(tag, name, value) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.onIgnoreTagStripAll" id="apidoc.element.xss.onIgnoreTagStripAll">
+        function <span class="apidocSignatureSpan">xss.</span>onIgnoreTagStripAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTagStripAll() {
+  return &#x27;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.onTag" id="apidoc.element.xss.onTag">
+        function <span class="apidocSignatureSpan">xss.</span>onTag
+        <span class="apidocSignatureSpan">(tag, html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onTag(tag, html, options) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.onTagAttr" id="apidoc.element.xss.onTagAttr">
+        function <span class="apidocSignatureSpan">xss.</span>onTagAttr
+        <span class="apidocSignatureSpan">(tag, name, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onTagAttr(tag, name, value) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.parseAttr" id="apidoc.element.xss.parseAttr">
+        function <span class="apidocSignatureSpan">xss.</span>parseAttr
+        <span class="apidocSignatureSpan">(html, onAttr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseAttr(html, onAttr) {
+  &#x27;user strict&#x27;;
+
+  var lastPos = 0;        // 当前位置
+  var retAttrs = [];      // 待返回的属性列表
+  var tmpName = false;    // 临时属性名称
+  var len = html.length;  // HTML代码长度
+
+  function addAttr (name, value) {
+    name = _.trim(name);
+    name = name.replace(REGEXP_ATTR_NAME, &#x27;&#x27;).toLowerCase();
+    if (name.length &#x3c; 1) return;
+    var ret = onAttr(name, value || &#x27;&#x27;);
+    if (ret) retAttrs.push(ret);
+  };
+
+  // 逐个分析字符
+  for (var i = 0; i &#x3c; len; i++) {
+    var c = html.charAt(i);
+    var v, j;
+    if (tmpName === false &#x26;&#x26; c === &#x27;=&#x27;) {
+      tmpName = html.slice(lastPos, i);
+      lastPos = i + 1;
+      continue;
+    }
+    if (tmpName !== false) {
+      // HTML标签内的引号仅当前一个字符是等于号时才有效
+      if (i === lastPos &#x26;&#x26; (c === &#x27;&#x22;&#x27; || c === &#x22;&#x27;&#x22;) &#x26;&#x26; html.charAt(i - 1) === &#x27;=&#x27;) {
+        j = html.indexOf(c, i + 1);
+        if (j === -1) {
+          break;
+        } else {
+          v = _.trim(html.slice(lastPos + 1, j));
+          addAttr(tmpName, v);
+          tmpName = false;
+          i = j;
+          lastPos = i + 1;
+          continue;
+        }
+      }
+    }
+    if (c === &#x27; &#x27;) {
+      if (tmpName === false) {
+        j = findNextEqual(html, i);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          addAttr(v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          i = j - 1;
+          continue;
+        }
+      } else {
+        j = findBeforeEqual(html, i - 1);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          v = stripQuoteWrap(v);
+          addAttr(tmpName, v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          continue;
+        }
+      }
+    }
+  }
+
+  if (lastPos &#x3c; html.length) {
+    if (tmpName === false) {
+      addAttr(html.slice(lastPos));
+    } else {
+      addAttr(tmpName, stripQuoteWrap(_.trim(html.slice(lastPos))));
+    }
+  }
+
+  return _.trim(retAttrs.join(&#x27; &#x27;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.parseTag" id="apidoc.element.xss.parseTag">
+        function <span class="apidocSignatureSpan">xss.</span>parseTag
+        <span class="apidocSignatureSpan">(html, onTag, escapeHtml)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseTag(html, onTag, escapeHtml) {
+  &#x27;user strict&#x27;;
+
+  var rethtml = &#x27;&#x27;;        // 待返回的HTML
+  var lastPos = 0;         // 上一个标签结束位置
+  var tagStart = false;    // 当前标签开始位置
+  var quoteStart = false;  // 引号开始位置
+  var currentPos = 0;      // 当前位置
+  var len = html.length;   // HTML长度
+  var currentHtml = &#x27;&#x27;;    // 当前标签的HTML代码
+  var currentTagName = &#x27;&#x27;; // 当前标签的名称
+
+  // 逐个分析字符
+  for (currentPos = 0; currentPos &#x3c; len; currentPos++) {
+    var c = html.charAt(currentPos);
+    if (tagStart === false) {
+      if (c === &#x27;&#x3c;&#x27;) {
+        tagStart = currentPos;
+        continue;
+      }
+    } else {
+      if (quoteStart === false) {
+        if (c === &#x27;&#x3c;&#x27;) {
+          rethtml += escapeHtml(html.slice(lastPos, currentPos));
+          tagStart = currentPos;
+          lastPos = currentPos;
+          continue;
+        }
+        if (c === &#x27;&#x3e;&#x27;) {
+          rethtml += escapeHtml(html.slice(lastPos, tagStart));
+          currentHtml = html.slice(tagStart, currentPos + 1);
+          currentTagName = getTagName(currentHtml);
+          rethtml += onTag(tagStart,
+                           rethtml.length,
+                           currentTagName,
+                           currentHtml,
+                           isClosing(currentHtml));
+          lastPos = currentPos + 1;
+          tagStart = false;
+          continue;
+        }
+        // HTML标签内的引号仅当前一个字符是等于号时才有效
+        if ((c === &#x27;&#x22;&#x27; || c === &#x22;&#x27;&#x22;) &#x26;&#x26; html.charAt(currentPos - 1) === &#x27;=&#x27;) {
+          quoteStart = c;
+          continue;
+        }
+      } else {
+        if (c === quoteStart) {
+          quoteStart = false;
+          continue;
+        }
+      }
+    }
+  }
+  if (lastPos &#x3c; html.length) {
+    rethtml += escapeHtml(html.substr(lastPos));
+  }
+
+  return rethtml;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.safeAttrValue" id="apidoc.element.xss.safeAttrValue">
+        function <span class="apidocSignatureSpan">xss.</span>safeAttrValue
+        <span class="apidocSignatureSpan">(tag, name, value, cssFilter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function safeAttrValue(tag, name, value, cssFilter) {
+  // 转换为友好的属性值，再做判断
+  value = friendlyAttrValue(value);
+
+  if (name === &#x27;href&#x27; || name === &#x27;src&#x27;) {
+    // 过滤 href 和 src 属性
+    // 仅允许 http:// | https:// | mailto: | / | # 开头的地址
+    value = _.trim(value);
+    if (value === &#x27;#&#x27;) return &#x27;#&#x27;;
+    if (!(value.substr(0, 7) === &#x27;http://&#x27; ||
+         value.substr(0, 8) === &#x27;https://&#x27; ||
+         value.substr(0, 7) === &#x27;mailto:&#x27; ||
+         value[0] === &#x27;#&#x27; ||
+         value[0] === &#x27;/&#x27;)) {
+      return &#x27;&#x27;;
+    }
+  } else if (name === &#x27;background&#x27;) {
+    // 过滤 background 属性 （这个xss漏洞较老了，可能已经不适用）
+    // javascript:
+    REGEXP_DEFAULT_ON_TAG_ATTR_4.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_4.test(value)) {
+      return &#x27;&#x27;;
+    }
+  } else if (name === &#x27;style&#x27;) {
+    //<span class="apidocCodeCommentSpan"> /*注释*/
+</span>    /*REGEXP_DEFAULT_ON_TAG_ATTR_3.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_3.test(value)) {
+      return &#x27;&#x27;;
+    }*/
+    // expression()
+    REGEXP_DEFAULT_ON_TAG_ATTR_7.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_7.test(value)) {
+      return &#x27;&#x27;;
+    }
+    // url()
+    REGEXP_DEFAULT_ON_TAG_ATTR_8.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_8.test(value)) {
+      REGEXP_DEFAULT_ON_TAG_ATTR_4.lastIndex = 0;
+      if (REGEXP_DEFAULT_ON_TAG_ATTR_4.test(value)) {
+        return &#x27;&#x27;;
+      }
+    }
+    if (cssFilter !== false) {
+      cssFilter = cssFilter || defaultCSSFilter;
+      value = cssFilter.process(value);
+    }
+  }
+
+  // 输出时需要转义&#x3c;&#x3e;&#x22;
+  value = escapeAttrValue(value);
+  return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.stripBlankChar" id="apidoc.element.xss.stripBlankChar">
+        function <span class="apidocSignatureSpan">xss.</span>stripBlankChar
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stripBlankChar(html) {
+  var chars = html.split(&#x27;&#x27;);
+  chars = chars.filter(function (char) {
+    var c = char.charCodeAt(0);
+    if (c === 127) return false;
+    if (c &#x3c;= 31) {
+      if (c === 10 || c === 13) return true;
+      return false;
+    }
+    return true;
+  });
+  return chars.join(&#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.stripCommentTag" id="apidoc.element.xss.stripCommentTag">
+        function <span class="apidocSignatureSpan">xss.</span>stripCommentTag
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stripCommentTag(html) {
+  return html.replace(STRIP_COMMENT_TAG_REGEXP, &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.unescapeQuote" id="apidoc.element.xss.unescapeQuote">
+        function <span class="apidocSignatureSpan">xss.</span>unescapeQuote
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unescapeQuote(str) {
+  return str.replace(REGEXP_QUOTE_2, &#x27;&#x22;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss.FilterXSS" id="apidoc.module.xss.FilterXSS">module xss.FilterXSS</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.FilterXSS.FilterXSS" id="apidoc.element.xss.FilterXSS.FilterXSS">
+        function <span class="apidocSignatureSpan">xss.</span>FilterXSS
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FilterXSS(options) {
+  options = shallowCopyObject(options || {});
+
+  if (options.stripIgnoreTag) {
+    if (options.onIgnoreTag) {
+      console.error(&#x27;Notes: cannot use these two options &#x22;stripIgnoreTag&#x22; and &#x22;onIgnoreTag&#x22; at the same time&#x27;);
+    }
+    options.onIgnoreTag = DEFAULT.onIgnoreTagStripAll;
+  }
+
+  options.whiteList = options.whiteList || DEFAULT.whiteList;
+  options.onTag = options.onTag || DEFAULT.onTag;
+  options.onTagAttr = options.onTagAttr || DEFAULT.onTagAttr;
+  options.onIgnoreTag = options.onIgnoreTag || DEFAULT.onIgnoreTag;
+  options.onIgnoreTagAttr = options.onIgnoreTagAttr || DEFAULT.onIgnoreTagAttr;
+  options.safeAttrValue = options.safeAttrValue || DEFAULT.safeAttrValue;
+  options.escapeHtml = options.escapeHtml || DEFAULT.escapeHtml;
+  this.options = options;
+
+  if (options.css === false) {
+    this.cssFilter = false;
+  } else {
+    options.css = options.css || {};
+    this.cssFilter = new FilterCSS(options.css);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+To avoid passing `options` every time, you can also do it in a faster way by
+creating a `FilterXSS` instance:
+
+```javascript
+options = {};  // Custom rules
+myxss = new xss.<span class="apidocCodeKeywordSpan">FilterXSS</span>(options);
+// then apply myxss.process()
+html = myxss.process(&#x27;&#x3c;script&#x3e;alert(&#x22;xss&#x22;);&#x3c;/script&#x3e;&#x27;);
+```
+
+Details of parameters in `options` would be described below.
+
+### Whitelist
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss.FilterXSS.prototype" id="apidoc.module.xss.FilterXSS.prototype">module xss.FilterXSS.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.FilterXSS.prototype.process" id="apidoc.element.xss.FilterXSS.prototype.process">
+        function <span class="apidocSignatureSpan">xss.FilterXSS.prototype.</span>process
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">process = function (html) {
+  // 兼容各种奇葩输入
+  html = html || &#x27;&#x27;;
+  html = html.toString();
+  if (!html) return &#x27;&#x27;;
+
+  var me = this;
+  var options = me.options;
+  var whiteList = options.whiteList;
+  var onTag = options.onTag;
+  var onIgnoreTag = options.onIgnoreTag;
+  var onTagAttr = options.onTagAttr;
+  var onIgnoreTagAttr = options.onIgnoreTagAttr;
+  var safeAttrValue = options.safeAttrValue;
+  var escapeHtml = options.escapeHtml;
+  var cssFilter = me.cssFilter;
+
+  // 是否清除不可见字符
+  if (options.stripBlankChar) {
+    html = DEFAULT.stripBlankChar(html);
+  }
+
+  // 是否禁止备注标签
+  if (!options.allowCommentTag) {
+    html = DEFAULT.stripCommentTag(html);
+  }
+
+  // 如果开启了stripIgnoreTagBody
+  var stripIgnoreTagBody = false;
+  if (options.stripIgnoreTagBody) {
+    var stripIgnoreTagBody = DEFAULT.StripTagBody(options.stripIgnoreTagBody, onIgnoreTag);
+    onIgnoreTag = stripIgnoreTagBody.onIgnoreTag;
+  }
+
+  var retHtml = parseTag(html, function (sourcePosition, position, tag, html, isClosing) {
+    var info = {
+      sourcePosition: sourcePosition,
+      position:       position,
+      isClosing:      isClosing,
+      isWhite:        (tag in whiteList)
+    };
+
+    // 调用onTag处理
+    var ret = onTag(tag, html, info);
+    if (!isNull(ret)) return ret;
+
+    // 默认标签处理方法
+    if (info.isWhite) {
+      // 白名单标签，解析标签属性
+      // 如果是闭合标签，则不需要解析属性
+      if (info.isClosing) {
+        return &#x27;&#x3c;/&#x27; + tag + &#x27;&#x3e;&#x27;;
+      }
+
+      var attrs = getAttrs(html);
+      var whiteAttrList = whiteList[tag];
+      var attrsHtml = parseAttr(attrs.html, function (name, value) {
+
+        // 调用onTagAttr处理
+        var isWhiteAttr = (_.indexOf(whiteAttrList, name) !== -1);
+        var ret = onTagAttr(tag, name, value, isWhiteAttr);
+        if (!isNull(ret)) return ret;
+
+        // 默认的属性处理方法
+        if (isWhiteAttr) {
+          // 白名单属性，调用safeAttrValue过滤属性值
+          value = safeAttrValue(tag, name, value, cssFilter);
+          if (value) {
+            return name + &#x27;=&#x22;&#x27; + value + &#x27;&#x22;&#x27;;
+          } else {
+            return name;
+          }
+        } else {
+          // 非白名单属性，调用onIgnoreTagAttr处理
+          var ret = onIgnoreTagAttr(tag, name, value, isWhiteAttr);
+          if (!isNull(ret)) return ret;
+          return;
+        }
+      });
+
+      // 构造新的标签代码
+      var html = &#x27;&#x3c;&#x27; + tag;
+      if (attrsHtml) html += &#x27; &#x27; + attrsHtml;
+      if (attrs.closing) html += &#x27; /&#x27;;
+      html += &#x27;&#x3e;&#x27;;
+      return html;
+
+    } else {
+      // 非白名单标签，调用onIgnoreTag处理
+      var ret = onIgnoreTag(tag, html, info);
+      if (!isNull(ret)) return ret;
+      return escapeHtml(html);
+    }
+
+  }, escapeHtml);
+
+  // 如果开启了stripIgnoreTagBody，需要对结果再进行处理
+  if (stripIgnoreTagBody) {
+    retHtml = stripIgnoreTagBody.remove(retHtml);
+  }
+
+  return retHtml;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+To avoid passing `options` every time, you can also do it in a faster way by
+creating a `FilterXSS` instance:
+
+```javascript
+options = {};  // Custom rules
+myxss = new xss.FilterXSS(options);
+// then apply myxss.<span class="apidocCodeKeywordSpan">process</span>()
+html = myxss.process(&#x27;&#x3c;script&#x3e;alert(&#x22;xss&#x22;);&#x3c;/script&#x3e;&#x27;);
+```
+
+Details of parameters in `options` would be described below.
+
+### Whitelist
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss.default" id="apidoc.module.xss.default">module xss.default</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.StripTagBody" id="apidoc.element.xss.default.StripTagBody">
+        function <span class="apidocSignatureSpan">xss.default.</span>StripTagBody
+        <span class="apidocSignatureSpan">(tags, next)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StripTagBody(tags, next) {
+  if (typeof(next) !== &#x27;function&#x27;) {
+    next = function () {};
+  }
+
+  var isRemoveAllTag = !Array.isArray(tags);
+  function isRemoveTag (tag) {
+    if (isRemoveAllTag) return true;
+    return (_.indexOf(tags, tag) !== -1);
+  }
+
+  var removeList = [];   // 要删除的位置范围列表
+  var posStart = false;  // 当前标签开始位置
+
+  return {
+    onIgnoreTag: function (tag, html, options) {
+      if (isRemoveTag(tag)) {
+        if (options.isClosing) {
+          var ret = &#x27;[/removed]&#x27;;
+          var end = options.position + ret.length;
+          removeList.push([posStart !== false ? posStart : options.position, end]);
+          posStart = false;
+          return ret;
+        } else {
+          if (!posStart) {
+            posStart = options.position;
+          }
+          return &#x27;[removed]&#x27;;
+        }
+      } else {
+        return next(tag, html, options);
+      }
+    },
+    remove: function (html) {
+      var rethtml = &#x27;&#x27;;
+      var lastPos = 0;
+      _.forEach(removeList, function (pos) {
+        rethtml += html.slice(lastPos, pos[0]);
+        lastPos = pos[1];
+      });
+      rethtml += html.slice(lastPos);
+      return rethtml;
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.clearNonPrintableCharacter" id="apidoc.element.xss.default.clearNonPrintableCharacter">
+        function <span class="apidocSignatureSpan">xss.default.</span>clearNonPrintableCharacter
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function clearNonPrintableCharacter(str) {
+  var str2 = &#x27;&#x27;;
+  for (var i = 0, len = str.length; i &#x3c; len; i++) {
+    str2 += str.charCodeAt(i) &#x3c; 32 ? &#x27; &#x27; : str.charAt(i);
+  }
+  return _.trim(str2);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.escapeAttrValue" id="apidoc.element.xss.default.escapeAttrValue">
+        function <span class="apidocSignatureSpan">xss.default.</span>escapeAttrValue
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeAttrValue(str) {
+  str = escapeQuote(str);
+  str = escapeHtml(str);
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+var source = &#x27;&#x3c;div a=&#x22;1&#x22; b=&#x22;2&#x22; data-a=&#x22;3&#x22; data-b=&#x22;4&#x22;&#x3e;hello&#x3c;/div&#x3e
+;&#x27;;
+var html = xss(source, {
+  onIgnoreTagAttr: function (tag, name, value, isWhiteAttr) {
+    if (name.substr(0, 5) === &#x27;data-&#x27;) {
+      // escape its value using built-in escapeAttrValue function
+      return name + &#x27;=&#x22;&#x27; + xss.<span class="apidocCodeKeywordSpan">escapeAttrValue</span>(value) + &#x27;&#x22;&#
+x27;;
+    }
+  }
+});
+
+console.log(&#x27;%s\nconvert to:\n%s&#x27;, source, html);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.escapeDangerHtml5Entities" id="apidoc.element.xss.default.escapeDangerHtml5Entities">
+        function <span class="apidocSignatureSpan">xss.default.</span>escapeDangerHtml5Entities
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeDangerHtml5Entities(str) {
+  return str.replace(REGEXP_ATTR_VALUE_COLON, &#x27;:&#x27;)
+            .replace(REGEXP_ATTR_VALUE_NEWLINE, &#x27; &#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.escapeHtml" id="apidoc.element.xss.default.escapeHtml">
+        function <span class="apidocSignatureSpan">xss.default.</span>escapeHtml
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeHtml(html) {
+  return html.replace(REGEXP_LT, &#x27;&#x26;lt;&#x27;).replace(REGEXP_GT, &#x27;&#x26;gt;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.escapeHtmlEntities" id="apidoc.element.xss.default.escapeHtmlEntities">
+        function <span class="apidocSignatureSpan">xss.default.</span>escapeHtmlEntities
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeHtmlEntities(str) {
+  return str.replace(REGEXP_ATTR_VALUE_1, function replaceUnicode (str, code) {
+    return (code[0] === &#x27;x&#x27; || code[0] === &#x27;X&#x27;)
+            ? String.fromCharCode(parseInt(code.substr(1), 16))
+            : String.fromCharCode(parseInt(code, 10));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.escapeQuote" id="apidoc.element.xss.default.escapeQuote">
+        function <span class="apidocSignatureSpan">xss.default.</span>escapeQuote
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function escapeQuote(str) {
+  return str.replace(REGEXP_QUOTE, &#x27;&#x26;quot;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.friendlyAttrValue" id="apidoc.element.xss.default.friendlyAttrValue">
+        function <span class="apidocSignatureSpan">xss.default.</span>friendlyAttrValue
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function friendlyAttrValue(str) {
+  str = unescapeQuote(str);             // 双引号
+  str = escapeHtmlEntities(str);         // 转换HTML实体编码
+  str = escapeDangerHtml5Entities(str);  // 转换危险的HTML5新增实体编码
+  str = clearNonPrintableCharacter(str); // 清除不可见字符
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var list = [];
+var html = xss(source, {
+  onTagAttr: function (tag, name, value, isWhiteAttr) {
+    if (tag === &#x27;img&#x27; &#x26;&#x26; name === &#x27;src&#x27;) {
+      // Use the built-in friendlyAttrValue function to escape attribute
+      // values. It supports converting entity tags such as &#x26;lt; to printable
+      // characters such as &#x3c;
+      list.push(xss.<span class="apidocCodeKeywordSpan">friendlyAttrValue</span>(value));
+    }
+    // Return nothing, means keep the default handling measure
+  }
+});
+
+console.log(&#x27;image list:\n%s&#x27;, list.join(&#x27;, &#x27;));
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.getDefaultCSSWhiteList" id="apidoc.element.xss.default.getDefaultCSSWhiteList">
+        function <span class="apidocSignatureSpan">xss.default.</span>getDefaultCSSWhiteList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDefaultWhiteList() {
+  // 白名单值说明：
+  // true: 允许该属性
+  // Function: function (val) { } 返回true表示允许该属性，其他值均表示不允许
+  // RegExp: regexp.test(val) 返回true表示允许该属性，其他值均表示不允许
+  // 除上面列出的值外均表示不允许
+  var whiteList = {};
+
+  whiteList[&#x27;align-content&#x27;] = false; // default: auto
+  whiteList[&#x27;align-items&#x27;] = false; // default: auto
+  whiteList[&#x27;align-self&#x27;] = false; // default: auto
+  whiteList[&#x27;alignment-adjust&#x27;] = false; // default: auto
+  whiteList[&#x27;alignment-baseline&#x27;] = false; // default: baseline
+  whiteList[&#x27;all&#x27;] = false; // default: depending on individual properties
+  whiteList[&#x27;anchor-point&#x27;] = false; // default: none
+  whiteList[&#x27;animation&#x27;] = false; // default: depending on individual properties
+  whiteList[&#x27;animation-delay&#x27;] = false; // default: 0
+  whiteList[&#x27;animation-direction&#x27;] = false; // default: normal
+  whiteList[&#x27;animation-duration&#x27;] = false; // default: 0
+  whiteList[&#x27;animation-fill-mode&#x27;] = false; // default: none
+  whiteList[&#x27;animation-iteration-count&#x27;] = false; // default: 1
+  whiteList[&#x27;animation-name&#x27;] = false; // default: none
+  whiteList[&#x27;animation-play-state&#x27;] = false; // default: running
+  whiteList[&#x27;animation-timing-function&#x27;] = false; // default: ease
+  whiteList[&#x27;azimuth&#x27;] = false; // default: center
+  whiteList[&#x27;backface-visibility&#x27;] = false; // default: visible
+  whiteList[&#x27;background&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;background-attachment&#x27;] = true; // default: scroll
+  whiteList[&#x27;background-clip&#x27;] = true; // default: border-box
+  whiteList[&#x27;background-color&#x27;] = true; // default: transparent
+  whiteList[&#x27;background-image&#x27;] = true; // default: none
+  whiteList[&#x27;background-origin&#x27;] = true; // default: padding-box
+  whiteList[&#x27;background-position&#x27;] = true; // default: 0% 0%
+  whiteList[&#x27;background-repeat&#x27;] = true; // default: repeat
+  whiteList[&#x27;background-size&#x27;] = true; // default: auto
+  whiteList[&#x27;baseline-shift&#x27;] = false; // default: baseline
+  whiteList[&#x27;binding&#x27;] = false; // default: none
+  whiteList[&#x27;bleed&#x27;] = false; // default: 6pt
+  whiteList[&#x27;bookmark-label&#x27;] = false; // default: content()
+  whiteList[&#x27;bookmark-level&#x27;] = false; // default: none
+  whiteList[&#x27;bookmark-state&#x27;] = false; // default: open
+  whiteList[&#x27;border&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-bottom&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-bottom-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-bottom-left-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-bottom-right-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-bottom-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-bottom-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-collapse&#x27;] = true; // default: separate
+  whiteList[&#x27;border-color&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-image&#x27;] = true; // default: none
+  whiteList[&#x27;border-image-outset&#x27;] = true; // default: 0
+  whiteList[&#x27;border-image-repeat&#x27;] = true; // default: stretch
+  whiteList[&#x27;border-image-slice&#x27;] = true; // default: 100%
+  whiteList[&#x27;border-image-source&#x27;] = true; // default: none
+  whiteList[&#x27;border-image-width&#x27;] = true; // default: 1
+  whiteList[&#x27;border-left&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-left-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-left-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-left-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-radius&#x27;] = true; // default: 0
+  whiteList[&#x27;border-right&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-right-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-right-style&#x27;] = true; // default: none
+  whiteList[&#x27;border-right-width&#x27;] = true; // default: medium
+  whiteList[&#x27;border-spacing&#x27;] = true; // default: 0
+  whiteList[&#x27;border-style&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-top&#x27;] = true; // default: depending on individual properties
+  whiteList[&#x27;border-top-color&#x27;] = true; // default: current color
+  whiteList[&#x27;border-top-left-radius&#x27;] = true; ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.getDefaultWhiteList" id="apidoc.element.xss.default.getDefaultWhiteList">
+        function <span class="apidocSignatureSpan">xss.default.</span>getDefaultWhiteList
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getDefaultWhiteList() {
+  return {
+    a:      [&#x27;target&#x27;, &#x27;href&#x27;, &#x27;title&#x27;],
+    abbr:   [&#x27;title&#x27;],
+    address: [],
+    area:   [&#x27;shape&#x27;, &#x27;coords&#x27;, &#x27;href&#x27;, &#x27;alt&#x27;],
+    article: [],
+    aside:  [],
+    audio:  [&#x27;autoplay&#x27;, &#x27;controls&#x27;, &#x27;loop&#x27;, &#x27;preload&#x27;, &#x27;src&#x27;],
+    b:      [],
+    bdi:    [&#x27;dir&#x27;],
+    bdo:    [&#x27;dir&#x27;],
+    big:    [],
+    blockquote: [&#x27;cite&#x27;],
+    br:     [],
+    caption: [],
+    center: [],
+    cite:   [],
+    code:   [],
+    col:    [&#x27;align&#x27;, &#x27;valign&#x27;, &#x27;span&#x27;, &#x27;width&#x27;],
+    colgroup: [&#x27;align&#x27;, &#x27;valign&#x27;, &#x27;span&#x27;, &#x27;width&#x27;],
+    dd:     [],
+    del:    [&#x27;datetime&#x27;],
+    details: [&#x27;open&#x27;],
+    div:    [],
+    dl:     [],
+    dt:     [],
+    em:     [],
+    font:   [&#x27;color&#x27;, &#x27;size&#x27;, &#x27;face&#x27;],
+    footer: [],
+    h1:     [],
+    h2:     [],
+    h3:     [],
+    h4:     [],
+    h5:     [],
+    h6:     [],
+    header: [],
+    hr:     [],
+    i:      [],
+    img:    [&#x27;src&#x27;, &#x27;alt&#x27;, &#x27;title&#x27;, &#x27;width&#x27;, &#x27;height&#x27;],
+    ins:    [&#x27;datetime&#x27;],
+    li:     [],
+    mark:   [],
+    nav:    [],
+    ol:     [],
+    p:      [],
+    pre:    [],
+    s:      [],
+    section:[],
+    small:  [],
+    span:   [],
+    sub:    [],
+    sup:    [],
+    strong: [],
+    table:  [&#x27;width&#x27;, &#x27;border&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tbody:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    td:     [&#x27;width&#x27;, &#x27;rowspan&#x27;, &#x27;colspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tfoot:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    th:     [&#x27;width&#x27;, &#x27;rowspan&#x27;, &#x27;colspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    thead:  [&#x27;align&#x27;, &#x27;valign&#x27;],
+    tr:     [&#x27;rowspan&#x27;, &#x27;align&#x27;, &#x27;valign&#x27;],
+    tt:     [],
+    u:      [],
+    ul:     [],
+    video:  [&#x27;autoplay&#x27;, &#x27;controls&#x27;, &#x27;loop&#x27;, &#x27;preload&#x27;, &#x27;src&#x27;, &#x27;height&#x27;, &#x27;width&#x27;]
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.onIgnoreTag" id="apidoc.element.xss.default.onIgnoreTag">
+        function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTag
+        <span class="apidocSignatureSpan">(tag, html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTag(tag, html, options) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.onIgnoreTagAttr" id="apidoc.element.xss.default.onIgnoreTagAttr">
+        function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTagAttr
+        <span class="apidocSignatureSpan">(tag, name, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTagAttr(tag, name, value) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.onIgnoreTagStripAll" id="apidoc.element.xss.default.onIgnoreTagStripAll">
+        function <span class="apidocSignatureSpan">xss.default.</span>onIgnoreTagStripAll
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onIgnoreTagStripAll() {
+  return &#x27;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.onTag" id="apidoc.element.xss.default.onTag">
+        function <span class="apidocSignatureSpan">xss.default.</span>onTag
+        <span class="apidocSignatureSpan">(tag, html, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onTag(tag, html, options) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.onTagAttr" id="apidoc.element.xss.default.onTagAttr">
+        function <span class="apidocSignatureSpan">xss.default.</span>onTagAttr
+        <span class="apidocSignatureSpan">(tag, name, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onTagAttr(tag, name, value) {
+  // do nothing
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.safeAttrValue" id="apidoc.element.xss.default.safeAttrValue">
+        function <span class="apidocSignatureSpan">xss.default.</span>safeAttrValue
+        <span class="apidocSignatureSpan">(tag, name, value, cssFilter)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function safeAttrValue(tag, name, value, cssFilter) {
+  // 转换为友好的属性值，再做判断
+  value = friendlyAttrValue(value);
+
+  if (name === &#x27;href&#x27; || name === &#x27;src&#x27;) {
+    // 过滤 href 和 src 属性
+    // 仅允许 http:// | https:// | mailto: | / | # 开头的地址
+    value = _.trim(value);
+    if (value === &#x27;#&#x27;) return &#x27;#&#x27;;
+    if (!(value.substr(0, 7) === &#x27;http://&#x27; ||
+         value.substr(0, 8) === &#x27;https://&#x27; ||
+         value.substr(0, 7) === &#x27;mailto:&#x27; ||
+         value[0] === &#x27;#&#x27; ||
+         value[0] === &#x27;/&#x27;)) {
+      return &#x27;&#x27;;
+    }
+  } else if (name === &#x27;background&#x27;) {
+    // 过滤 background 属性 （这个xss漏洞较老了，可能已经不适用）
+    // javascript:
+    REGEXP_DEFAULT_ON_TAG_ATTR_4.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_4.test(value)) {
+      return &#x27;&#x27;;
+    }
+  } else if (name === &#x27;style&#x27;) {
+    //<span class="apidocCodeCommentSpan"> /*注释*/
+</span>    /*REGEXP_DEFAULT_ON_TAG_ATTR_3.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_3.test(value)) {
+      return &#x27;&#x27;;
+    }*/
+    // expression()
+    REGEXP_DEFAULT_ON_TAG_ATTR_7.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_7.test(value)) {
+      return &#x27;&#x27;;
+    }
+    // url()
+    REGEXP_DEFAULT_ON_TAG_ATTR_8.lastIndex = 0;
+    if (REGEXP_DEFAULT_ON_TAG_ATTR_8.test(value)) {
+      REGEXP_DEFAULT_ON_TAG_ATTR_4.lastIndex = 0;
+      if (REGEXP_DEFAULT_ON_TAG_ATTR_4.test(value)) {
+        return &#x27;&#x27;;
+      }
+    }
+    if (cssFilter !== false) {
+      cssFilter = cssFilter || defaultCSSFilter;
+      value = cssFilter.process(value);
+    }
+  }
+
+  // 输出时需要转义&#x3c;&#x3e;&#x22;
+  value = escapeAttrValue(value);
+  return value;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.stripBlankChar" id="apidoc.element.xss.default.stripBlankChar">
+        function <span class="apidocSignatureSpan">xss.default.</span>stripBlankChar
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stripBlankChar(html) {
+  var chars = html.split(&#x27;&#x27;);
+  chars = chars.filter(function (char) {
+    var c = char.charCodeAt(0);
+    if (c === 127) return false;
+    if (c &#x3c;= 31) {
+      if (c === 10 || c === 13) return true;
+      return false;
+    }
+    return true;
+  });
+  return chars.join(&#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.stripCommentTag" id="apidoc.element.xss.default.stripCommentTag">
+        function <span class="apidocSignatureSpan">xss.default.</span>stripCommentTag
+        <span class="apidocSignatureSpan">(html)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function stripCommentTag(html) {
+  return html.replace(STRIP_COMMENT_TAG_REGEXP, &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.default.unescapeQuote" id="apidoc.element.xss.default.unescapeQuote">
+        function <span class="apidocSignatureSpan">xss.default.</span>unescapeQuote
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unescapeQuote(str) {
+  return str.replace(REGEXP_QUOTE_2, &#x27;&#x22;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss.parser" id="apidoc.module.xss.parser">module xss.parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.parser.parseAttr" id="apidoc.element.xss.parser.parseAttr">
+        function <span class="apidocSignatureSpan">xss.parser.</span>parseAttr
+        <span class="apidocSignatureSpan">(html, onAttr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseAttr(html, onAttr) {
+  &#x27;user strict&#x27;;
+
+  var lastPos = 0;        // 当前位置
+  var retAttrs = [];      // 待返回的属性列表
+  var tmpName = false;    // 临时属性名称
+  var len = html.length;  // HTML代码长度
+
+  function addAttr (name, value) {
+    name = _.trim(name);
+    name = name.replace(REGEXP_ATTR_NAME, &#x27;&#x27;).toLowerCase();
+    if (name.length &#x3c; 1) return;
+    var ret = onAttr(name, value || &#x27;&#x27;);
+    if (ret) retAttrs.push(ret);
+  };
+
+  // 逐个分析字符
+  for (var i = 0; i &#x3c; len; i++) {
+    var c = html.charAt(i);
+    var v, j;
+    if (tmpName === false &#x26;&#x26; c === &#x27;=&#x27;) {
+      tmpName = html.slice(lastPos, i);
+      lastPos = i + 1;
+      continue;
+    }
+    if (tmpName !== false) {
+      // HTML标签内的引号仅当前一个字符是等于号时才有效
+      if (i === lastPos &#x26;&#x26; (c === &#x27;&#x22;&#x27; || c === &#x22;&#x27;&#x22;) &#x26;&#x26; html.charAt(i - 1) === &#x27;=&#x27;) {
+        j = html.indexOf(c, i + 1);
+        if (j === -1) {
+          break;
+        } else {
+          v = _.trim(html.slice(lastPos + 1, j));
+          addAttr(tmpName, v);
+          tmpName = false;
+          i = j;
+          lastPos = i + 1;
+          continue;
+        }
+      }
+    }
+    if (c === &#x27; &#x27;) {
+      if (tmpName === false) {
+        j = findNextEqual(html, i);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          addAttr(v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          i = j - 1;
+          continue;
+        }
+      } else {
+        j = findBeforeEqual(html, i - 1);
+        if (j === -1) {
+          v = _.trim(html.slice(lastPos, i));
+          v = stripQuoteWrap(v);
+          addAttr(tmpName, v);
+          tmpName = false;
+          lastPos = i + 1;
+          continue;
+        } else {
+          continue;
+        }
+      }
+    }
+  }
+
+  if (lastPos &#x3c; html.length) {
+    if (tmpName === false) {
+      addAttr(html.slice(lastPos));
+    } else {
+      addAttr(tmpName, stripQuoteWrap(_.trim(html.slice(lastPos))));
+    }
+  }
+
+  return _.trim(retAttrs.join(&#x27; &#x27;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.parser.parseTag" id="apidoc.element.xss.parser.parseTag">
+        function <span class="apidocSignatureSpan">xss.parser.</span>parseTag
+        <span class="apidocSignatureSpan">(html, onTag, escapeHtml)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseTag(html, onTag, escapeHtml) {
+  &#x27;user strict&#x27;;
+
+  var rethtml = &#x27;&#x27;;        // 待返回的HTML
+  var lastPos = 0;         // 上一个标签结束位置
+  var tagStart = false;    // 当前标签开始位置
+  var quoteStart = false;  // 引号开始位置
+  var currentPos = 0;      // 当前位置
+  var len = html.length;   // HTML长度
+  var currentHtml = &#x27;&#x27;;    // 当前标签的HTML代码
+  var currentTagName = &#x27;&#x27;; // 当前标签的名称
+
+  // 逐个分析字符
+  for (currentPos = 0; currentPos &#x3c; len; currentPos++) {
+    var c = html.charAt(currentPos);
+    if (tagStart === false) {
+      if (c === &#x27;&#x3c;&#x27;) {
+        tagStart = currentPos;
+        continue;
+      }
+    } else {
+      if (quoteStart === false) {
+        if (c === &#x27;&#x3c;&#x27;) {
+          rethtml += escapeHtml(html.slice(lastPos, currentPos));
+          tagStart = currentPos;
+          lastPos = currentPos;
+          continue;
+        }
+        if (c === &#x27;&#x3e;&#x27;) {
+          rethtml += escapeHtml(html.slice(lastPos, tagStart));
+          currentHtml = html.slice(tagStart, currentPos + 1);
+          currentTagName = getTagName(currentHtml);
+          rethtml += onTag(tagStart,
+                           rethtml.length,
+                           currentTagName,
+                           currentHtml,
+                           isClosing(currentHtml));
+          lastPos = currentPos + 1;
+          tagStart = false;
+          continue;
+        }
+        // HTML标签内的引号仅当前一个字符是等于号时才有效
+        if ((c === &#x27;&#x22;&#x27; || c === &#x22;&#x27;&#x22;) &#x26;&#x26; html.charAt(currentPos - 1) === &#x27;=&#x27;) {
+          quoteStart = c;
+          continue;
+        }
+      } else {
+        if (c === quoteStart) {
+          quoteStart = false;
+          continue;
+        }
+      }
+    }
+  }
+  if (lastPos &#x3c; html.length) {
+    rethtml += escapeHtml(html.substr(lastPos));
+  }
+
+  return rethtml;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.xss.util" id="apidoc.module.xss.util">module xss.util</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.xss.util.forEach" id="apidoc.element.xss.util.forEach">
+        function <span class="apidocSignatureSpan">xss.util.</span>forEach
+        <span class="apidocSignatureSpan">(arr, fn, scope)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">forEach = function (arr, fn, scope) {
+  var i, j;
+  if (Array.prototype.forEach) {
+    return arr.forEach(fn, scope);
+  }
+  for (i = 0, j = arr.length; i &#x3c; j; i++) {
+    fn.call(scope, arr[i], i, arr);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    } else {
+      return next(tag, html, options);
+    }
+  },
+  remove: function (html) {
+    var rethtml = &#x27;&#x27;;
+    var lastPos = 0;
+    _.<span class="apidocCodeKeywordSpan">forEach</span>(removeList, function (pos) {
+      rethtml += html.slice(lastPos, pos[0]);
+      lastPos = pos[1];
+    });
+    rethtml += html.slice(lastPos);
+    return rethtml;
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.util.indexOf" id="apidoc.element.xss.util.indexOf">
+        function <span class="apidocSignatureSpan">xss.util.</span>indexOf
+        <span class="apidocSignatureSpan">(arr, item)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">indexOf = function (arr, item) {
+  var i, j;
+  if (Array.prototype.indexOf) {
+    return arr.indexOf(item);
+  }
+  for (i = 0, j = arr.length; i &#x3c; j; i++) {
+    if (arr[i] === item) {
+      return i;
+    }
+  }
+  return -1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (typeof(next) !== &#x27;function&#x27;) {
+  next = function () {};
+}
+
+var isRemoveAllTag = !Array.isArray(tags);
+function isRemoveTag (tag) {
+  if (isRemoveAllTag) return true;
+  return (_.<span class="apidocCodeKeywordSpan">indexOf</span>(tags, tag) !== -1);
+}
+
+var removeList = [];   // 要删除的位置范围列表
+var posStart = false;  // 当前标签开始位置
+
+return {
+  onIgnoreTag: function (tag, html, options) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.xss.util.trim" id="apidoc.element.xss.util.trim">
+        function <span class="apidocSignatureSpan">xss.util.</span>trim
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">trim = function (str) {
+  if (String.prototype.trim) {
+    return str.trim();
+  }
+  return str.replace(/(^\s*)|(\s*$)/g, &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function safeAttrValue (tag, name, value, cssFilter) {
+// 转换为友好的属性值，再做判断
+value = friendlyAttrValue(value);
+
+if (name === &#x27;href&#x27; || name === &#x27;src&#x27;) {
+  // 过滤 href 和 src 属性
+  // 仅允许 http:// | https:// | mailto: | / | # 开头的地址
+  value = _.<span class="apidocCodeKeywordSpan">trim</span>(value);
+  if (value === &#x27;#&#x27;) return &#x27;#&#x27;;
+  if (!(value.substr(0, 7) === &#x27;http://&#x27; ||
+       value.substr(0, 8) === &#x27;https://&#x27; ||
+       value.substr(0, 7) === &#x27;mailto:&#x27; ||
+       value[0] === &#x27;#&#x27; ||
+       value[0] === &#x27;/&#x27;)) {
+    return &#x27;&#x27;;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
